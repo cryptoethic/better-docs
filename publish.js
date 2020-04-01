@@ -370,6 +370,10 @@ function linktoExternal(longName, name) {
     return linkto(longName, name.replace(/(^"|"$)/g, ''));
 }
 
+function linktoNamespace(longName, name) {
+    return linkto(longName, longName.replace(/(^"|"$)/g, ''));
+}
+
 function buildGroupNav (members, title) {
     var globalNav;
     var seenTutorials = {};
@@ -382,7 +386,7 @@ function buildGroupNav (members, title) {
     nav += buildMemberNav(members.tutorials || [], 'Tutorials', seenTutorials, linktoTutorial);
     nav += buildMemberNav(members.modules || [], 'Modules', {}, linkto);
     nav += buildMemberNav(members.externals || [], 'Externals', seen, linktoExternal);
-    nav += buildMemberNav(members.namespaces || [], 'Namespaces', seen, linkto);
+    nav += buildMemberNav(members.namespaces || [], 'Namespaces', seen, linktoNamespace);
     nav += buildMemberNav(members.classes || [], 'Classes', seen, linkto);
     nav += buildMemberNav(members.interfaces || [], 'Interfaces', seen, linkto);
     nav += buildMemberNav(members.events || [], 'Events', seen, linkto);
